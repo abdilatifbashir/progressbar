@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>progress bar</title>
+    <style>
+      .barDiv {
+        width: 100%;
+        background-color:#E0E0E0;
+        border-radius: 20px;
+        height: 50px;
+      }
+      .innerBar {
+        width: 50%;
+        border-radius: 10px;
+        height: 100%;
+      }
+      .innerBar span
+      {
+          float:right;
+          padding:10px 10px 10px 0;
+      }
+      #innerBar1 {
+        background-color:#3fe86c;
+      }
+      #innerBar2 {
+        background-color: #e8553f;
+      }
+      #innerBar3 {
+        background-color: #e8dd3f;
+      }
+      #innerBar4
+      {
+          background-color: #f0faf9;
+      }
+      #innerBar5
+      {
+          background-color: #445ef2;
+      }
+      .btn {
+  background-color: #008000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+    </style>
+  </head>
+  <body>
+    <h2>Progress Bar Challenge</h2>
+    <div>
+      <div class="barDiv">
+        <div id="innerBar1" class="innerBar"><span class="percentage">50%</span></div>
+      </div>
+      <br>
+      
+      <div class="barDiv">
+        <div id="innerBar2" class="innerBar"><span class="percentage">50%</span></div>
+      </div>
+      <br>
+      <div class="barDiv">
+        <div id="innerBar3" class="innerBar"><span class="percentage">50%</span></div>
+      </div>
+      <br>
+      <div class="barDiv">
+        <div id="innerBar4" class="innerBar"><span class="percentage">50%</span></div>
+      </div>
+      <br>
+      <div class="barDiv">
+        <div id="innerBar5" class="innerBar"><span class="percentage">50%</span></div>
+      </div>
+      
+      <div>
+        <button class="btn" onclick="increaseProgres()">Finish</button>
+      </div>
+      
+    </div>
+
+    <script>
+      let counter = 0
+      const increaseProgres = () => {
+        if (counter == 0) {
+          counter = 1
+          let bar = document.getElementsByClassName('innerBar')
+          let percentage = document.getElementsByClassName('percentage')
+          //alert(bar.length)
+
+          //Iterate through each dom element and increase progress width
+          for (let i = 0; i < bar.length; i++) {
+            let barWidth = 1
+            const screen = () => {
+              if (barWidth >= 100) {
+                clearInterval(id)
+                counter = 0
+              } else {
+                barWidth++
+                bar[i].style.width = barWidth + '%'
+                
+                percentage[i].innerHTML="100%";
+              }
+            }
+            let id = setInterval(screen, 10)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
